@@ -14,12 +14,16 @@
 	<b id = "membersText"></b>
 	<b id = "foodText"></b>
 	<b id = "shelterText"></b>
+	<b id = "knowledgeText"></b>
+	<b id = "communityText"></b>
 </body>
 
 <script>
 	var members = 5;
-	var food = 3.0;
+	var food = 30.0;
 	var shelter = 3.0;
+	var knowledge = 1.0;
+	var community = 90.0;
 
 	var assignedFood;
 	var assignedShelter;
@@ -28,6 +32,14 @@
 		document.getElementById("membersText").innerHTML = "Members: " + members;
 		document.getElementById("foodText").innerHTML = "Food: " + food;
 		document.getElementById("shelterText").innerHTML = "Shelter: " + shelter;
+		document.getElementById("knowledgeText").innerHTML = "Knowledge:  " + knowledge;
+		document.getElementById("communityText").innerHTML = "Community: " + community;
+
+		var editRoles = document.createElement("BUTTON");
+		editRoles.innerHTML = "Edit Roles";
+		editRoles.onclick = createRoles();
+		document.body.appendChild(editRoles);
+
 		createRoles();
 	}
 
@@ -35,15 +47,24 @@
 		assignedFood = document.getElementById("Food").value;
 		assignedShelter = document.getElementById("Shelter").value;
 
-		setTimeout(function() {
+		document.getElementById("Food").remove();
+		document.getElementById("Shelter").remove();
+
+		setInterval(function() {
 			for (var i = 0; i < assignedFood; i++) {
 				food += .1;
 			}
-			alert(food);
+			for (var i = 0; i < members; i++) {
+				food -= .05;
+			}
 			document.getElementById("membersText").innerHTML = "Members: " + members;
 			document.getElementById("foodText").innerHTML = "Food: " + food;
 			document.getElementById("shelterText").innerHTML = "Shelter: " + shelter;
 		}, 2000);
+	}
+
+	function editRoles() {
+		alert("succes");
 	}
 
 </script>
