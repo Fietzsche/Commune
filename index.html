@@ -9,19 +9,41 @@
 
 	<textarea id = "Food"></textarea>
 	<textarea id = "Shelter"></textarea>
-	<button onclick = createRoles()>Submit</button>
+	<button onclick = loadScreen()>Submit</button>
+
+	<b id = "membersText"></b>
+	<b id = "foodText"></b>
+	<b id = "shelterText"></b>
 </body>
 
 <script>
 	var members = 5;
-	var food;
-	var shelter;
+	var food = 3.0;
+	var shelter = 3.0;
 
 	var assignedFood;
 	var assignedShelter;
 
+	function loadScreen() {
+		document.getElementById("membersText").innerHTML = "Members: " + members;
+		document.getElementById("foodText").innerHTML = "Food: " + food;
+		document.getElementById("shelterText").innerHTML = "Shelter: " + shelter;
+		createRoles();
+	}
+
 	function createRoles() {
-		alert("success");
+		assignedFood = document.getElementById("Food").value;
+		assignedShelter = document.getElementById("Shelter").value;
+
+		setTimeout(function() {
+			for (var i = 0; i < assignedFood; i++) {
+				food += .1;
+			}
+			alert(food);
+			document.getElementById("membersText").innerHTML = "Members: " + members;
+			document.getElementById("foodText").innerHTML = "Food: " + food;
+			document.getElementById("shelterText").innerHTML = "Shelter: " + shelter;
+		}, 2000);
 	}
 
 </script>
